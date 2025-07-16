@@ -1,0 +1,46 @@
+import { Heading } from '../components/Heading'
+import { SubHeading } from '../components/SubHeading'
+import { InputBox } from '../components/InputBox'
+import { Button } from '../components/Button'
+import { BottomWarning } from '../components/BottomWarning'
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+export function Signup() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
+  return (
+    <div className='flex justify-center bg-gray-200'>
+      <div className='flex flex-col justify-center h-screen'>
+        <div className='rounded-lg bg-white w-80 text-center p-2 px-4 shadow'>
+          <Heading title={'Signup'}/>
+          <SubHeading title={'Enter your credentials to create your account'}/>
+          <InputBox label={'Email'} placeholder={"Enter Your Email"} onChange={e => setEmail(e.target.value)}/>
+          <InputBox label={'Password'} placeholder={"Enter Your Password"} onChange={e => setPassword(e.target.value)}/>
+          <div className='pt-4'>
+            <Button text={'Submit'} onClick={async () => {
+              try {
+                const response = await axios.post('http://localhost:3000/auth/signup',{
+                  email,
+                  password
+                })
+                localStorage.setItem('token', response.data.cookie)
+                console.log(response.data)
+                if(response.status >= 200) {
+                  navigate('/')
+                }
+              }
+              catch(err) {
+                alert(err.request.response)
+              }
+            }}/>
+          </div>
+          <BottomWarning label={`Already have an account?`} link={'/signin'} buttonText={'signin'}/>
+        </div>      
+      </div>
+    </div>
+  )
+}

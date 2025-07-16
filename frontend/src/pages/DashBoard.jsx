@@ -47,7 +47,7 @@ export const DashBoard = () => {
     <>
       <AppBar />
       <AddBookmark />
-      <div className="grid grid-cols-4 gap-4 px-10">
+      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 px-10">
         {bookmarks.map((bookmark, index) => (
           <BookmarkCard
             key={index}

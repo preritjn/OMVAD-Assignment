@@ -8,27 +8,27 @@ export const BookmarkCard = ({ id,title,favicon,summary }) => {
         <img src={favicon} alt="favicon" />
       </div>
       <p className="text-gray-700 mb-4">{summary}</p>
-        <div className="mt-4">
-            <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm"
-            onClick={async () => {
-                try {
-                  await axios.post(`http://localhost:3000/functions/delete-bookmark/${id}`,{
-                    id: id
-                  },{
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
-                  })  
-                  alert("Bookmark deleted successfully")
-                  window.location.reload()              
+      <div className="mt-4">
+        <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm"
+        onClick={async () => {
+            try {
+              await axios.post(`http://localhost:3000/functions/delete-bookmark/${id}`,{
+                id: id
+              },{
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
-                catch(err) {
-                  alert(err.request.response)
-                }
-            }}
-            >Delete</button>
-        </div>
+              })  
+              alert("Bookmark deleted successfully")
+              window.location.reload()              
+            }
+            catch(err) {
+              alert(err.request.response)
+            }
+        }}
+        >Delete</button>
+      </div>
     </div>
   )
 }

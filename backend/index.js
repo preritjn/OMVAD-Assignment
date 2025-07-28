@@ -8,7 +8,12 @@ const functionsRouter = require('./routes/functions')
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(cors())
+app.use(cors(
+  {
+    origin: 'https://bookmark-summary.netlify.app',
+    credentials: true
+  }
+))
 app.use(cookieParser())
 app.use(express.json())
 app.use('/auth', authRouter)

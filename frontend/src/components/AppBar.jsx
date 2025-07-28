@@ -1,5 +1,6 @@
 import { Heading } from './Heading'
 import { Button } from './Button'
+import axios from 'axios'
 
 export const AppBar = () => {
   return (
@@ -7,7 +8,9 @@ export const AppBar = () => {
       <Heading title={'Bookmark App'}/>
       <div className='flex items-center'>
         <Button text={'Signout'} onClick={() => {
-          localStorage.removeItem('token')
+          axios.post('http://localhost:3000/auth/signout', {}, {
+            withCredentials: true
+          })
           window.location.href = '/signin'
         }}/>
       </div>

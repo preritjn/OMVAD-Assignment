@@ -15,10 +15,7 @@ export const BookmarkCard = ({ id,title,favicon,summary }) => {
               await axios.post(`http://localhost:3000/functions/delete-bookmark/${id}`,{
                 id: id
               },{
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
+                withCredentials: true
               })  
               alert("Bookmark deleted successfully")
               window.location.reload()              

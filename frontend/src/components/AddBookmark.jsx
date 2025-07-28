@@ -15,10 +15,7 @@ export const AddBookmark = () => {
           <Button text={ 'Add Bookmark' } onClick={async () => {
             try {
                 await axios.get(`http://localhost:3000/functions/save-bookmark?url=${url}`,{
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                  }
+                  withCredentials: true
                 })
                 alert('Bookmark added successfully')
                 window.location.reload()

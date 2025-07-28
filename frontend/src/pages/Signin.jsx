@@ -26,10 +26,12 @@ export const Signin = () => {
                 const response = await axios.post('http://localhost:3000/auth/signin',{
                   email,
                   password
+                },{
+                  withCredentials: true,
                 })
                 localStorage.setItem('token', response.data['cookie'])                
                 if(response.status >= 200) {
-                  navigate('/')
+                  navigate('/dashboard')
                 }
               }
               catch(err) {

@@ -2,7 +2,6 @@ const Router = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
 const { URL } = require('url')
-const { OpenAI } = require('openai')
 const userMiddleware = require('../middlewares/userMiddleware')
 const { User, Bookmark } = require('../db/index')
 

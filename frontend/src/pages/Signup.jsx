@@ -26,11 +26,14 @@ export function Signup() {
                 const response = await axios.post('http://localhost:3000/auth/signup',{
                   email,
                   password
-                })
+                },
+              {
+                  withCredentials: true,
+              })
                 localStorage.setItem('token', response.data.cookie)
                 console.log(response.data)
                 if(response.status >= 200) {
-                  navigate('/')
+                  navigate('/dashboard')
                 }
               }
               catch(err) {

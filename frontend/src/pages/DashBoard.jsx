@@ -14,6 +14,8 @@ export const DashBoard = () => {
     try {
       const response = await axios.post('http://localhost:3000/auth/verify', {
         token
+      },{
+        withCredentials: true,
       })
       return await response.data
     }
@@ -30,10 +32,7 @@ export const DashBoard = () => {
       })
     },300000)
     const response = axios.get("http://localhost:3000/functions/get-bookmarks", {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+      withCredentials:true
     })
     response.then(data => {
       setBookmarks(data.data)

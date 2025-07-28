@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000
 app.use(cors(
   {
     origin: 'https://bookmark-summary.netlify.app',
-    credentials: true
+    credentials: true,
   }
 ))
 app.use(cookieParser())

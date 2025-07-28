@@ -13,7 +13,7 @@ export const AddBookmark = () => {
         <div className='flex flex-col justify-center pl-5 w-1/2'>
           <Button text={ 'Add Bookmark' } onClick={async () => {
             try {
-              await axios.get(`https://omvad-assignment-backend.onrender.com/functions/save-bookmark?url=${url}`,{
+              await axios.get(`https://omvad-assignment-backend.onrender.com/functions/save-bookmark?url=${url}`,{},{
                 withCredentials: true
               })
               alert('Bookmark added successfully')

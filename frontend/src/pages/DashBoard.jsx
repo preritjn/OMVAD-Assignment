@@ -8,7 +8,7 @@ export const DashBoard = () => {
   const [bookmarks, setBookmarks] = useState([])
 
   useEffect(() => {
-    const response = axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks", {
+    const response = axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks",{}, {
       withCredentials:true
     })
     response.then(data => {

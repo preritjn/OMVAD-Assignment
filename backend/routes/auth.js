@@ -72,15 +72,4 @@ router.post('/signout', (req,res) => {
     return res.status(200).json({message: "Signed out Successfully"})
 })
 
-router.post('/verify', (req,res) => {
-    const { token } = req.body
-    try {
-      jwt.verify(token,process.env.JWT_KEY)
-      return res.status(200).send(true)
-    }
-    catch ( err ) {
-      return res.status(401).send(false)
-    }    
-})
-
 module.exports = router

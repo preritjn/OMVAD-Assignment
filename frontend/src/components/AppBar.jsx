@@ -8,10 +8,10 @@ export const AppBar = () => {
       <Heading title={'Bookmark App'}/>
       <div className='flex items-center'>
         <Button text={'Signout'} onClick={() => {
-          axios.post('http://localhost:3000/auth/signout', {}, {
+          axios.post('https://omvad-assignment-backend.onrender.com/auth/signout', {}, {
             withCredentials: true
           })
-          window.location.href = '/signin'
+          window.location.href = '/'
         }}/>
       </div>
     </div>

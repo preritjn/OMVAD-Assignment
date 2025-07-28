@@ -23,7 +23,7 @@ export const Signin = () => {
           <div className='pt-4'>
             <Button text={'Submit'} onClick={async () => {
               try {
-                const response = await axios.post('http://localhost:3000/auth/signin',{
+                const response = await axios.post('https://omvad-assignment-backend.onrender.com/auth/signin',{
                   email,
                   password
                 },{
@@ -36,8 +36,7 @@ export const Signin = () => {
               }
               catch(err) {
                 alert(err.request.response)
-              }
-              
+              }              
             }}/>
           </div>
           <BottomWarning label={`Don't have an account?`} link={'/signup'} buttonText={'signup'}/>

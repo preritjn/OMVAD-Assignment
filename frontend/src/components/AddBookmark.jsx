@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import axios from 'axios'
-
 import { Button } from './Button'
 import { InputBox } from './InputBox'
 
@@ -14,14 +13,14 @@ export const AddBookmark = () => {
         <div className='flex flex-col justify-center pl-5 w-1/2'>
           <Button text={ 'Add Bookmark' } onClick={async () => {
             try {
-                await axios.get(`http://localhost:3000/functions/save-bookmark?url=${url}`,{
-                  withCredentials: true
-                })
-                alert('Bookmark added successfully')
-                window.location.reload()
+              await axios.get(`https://omvad-assignment-backend.onrender.com/functions/save-bookmark?url=${url}`,{
+                withCredentials: true
+              })
+              alert('Bookmark added successfully')
+              window.location.reload()
             }
             catch(err) {
-                alert(err.request.response)
+              alert(err.request.response)
             }
           }}/>
         </div>

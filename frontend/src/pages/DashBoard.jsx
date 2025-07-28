@@ -6,21 +6,19 @@ import { BookmarkCard } from "../components/BookmarkCard"
 import { AddBookmark } from "../components/AddBookmark"
 
 export const DashBoard = () => {
-  const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const [bookmarks, setBookmarks] = useState([])
 
   async function fetch() {
     try {
-      const response = await axios.post('http://localhost:3000/auth/verify', {
-        token
-      },{
+      const response = await axios.post('https://omvad-assignment-backend.onrender.com/auth/verify',{
         withCredentials: true,
       })
       return await response.data
     }
-    catch (err) {
-        console.log(err)
+    catch (error) {
+      console.error("Error fetching user data:", error)
+      window.location.href = '/'
     }
   }
 
@@ -31,7 +29,7 @@ export const DashBoard = () => {
           navigate('/signin')
       })
     },300000)
-    const response = axios.get("http://localhost:3000/functions/get-bookmarks", {
+    const response = axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks", {
       withCredentials:true
     })
     response.then(data => {

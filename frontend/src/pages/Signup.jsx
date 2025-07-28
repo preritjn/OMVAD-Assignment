@@ -23,15 +23,13 @@ export function Signup() {
           <div className='pt-4'>
             <Button text={'Submit'} onClick={async () => {
               try {
-                const response = await axios.post('http://localhost:3000/auth/signup',{
+                const response = await axios.post('https://omvad-assignment-backend.onrender.com/auth/signup',{
                   email,
                   password
                 },
-              {
+                {
                   withCredentials: true,
-              })
-                localStorage.setItem('token', response.data.cookie)
-                console.log(response.data)
+                })
                 if(response.status >= 200) {
                   navigate('/dashboard')
                 }

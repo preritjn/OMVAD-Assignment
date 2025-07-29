@@ -12,6 +12,8 @@ app.use(cors(
   {
     origin: 'https://bookmark-summary.netlify.app',
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 ))
 app.use(cookieParser())

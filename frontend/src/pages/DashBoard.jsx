@@ -7,16 +7,21 @@ import { AddBookmark } from "../components/AddBookmark"
 export const DashBoard = () => {
   const [bookmarks, setBookmarks] = useState([])
 
-  useEffect(() => {
-    const response = axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks",{}, {
-      withCredentials:true
-    })
-    response.then(data => {
-      setBookmarks(data.data)
-    }).catch(err => {
-      console.error("Error fetching bookmarks:", err)
+  const fetchBookmarks = async () => {
+    try {
+      const response = await axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks",{}, {
+        withCredentials: true
+      })
+      setBookmarks(response.data)
+    }
+    catch (error) {
+      console.error("Error fetching bookmarks:", error)
       alert("Error fetching bookmarks")
-    })
+    }
+  }
+
+  useEffect(() => {
+    fetchBookmarks()
   },[])  
 
   return (

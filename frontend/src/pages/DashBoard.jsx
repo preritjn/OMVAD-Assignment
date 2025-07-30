@@ -9,8 +9,8 @@ export const DashBoard = () => {
 
   const fetchBookmarks = async () => {
     try {
-      const response = await axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks",{}, {
-        withCredentials: true
+      const response = await axios.get("https://omvad-assignment-backend.onrender.com/functions/get-bookmarks", {
+        withCredentials: true,
       })
       setBookmarks(response.data)
     }

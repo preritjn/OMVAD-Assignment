@@ -12,7 +12,7 @@ export const BookmarkCard = ({ id,title,favicon,summary }) => {
         <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm"
         onClick={async () => {
             try {
-              await axios.post(`https://omvad-assignment-backend.onrender.com/functions/delete-bookmark/${id}`,{},{
+              await axios.post(`https://omvad-assignment-backend.onrender.com/functions/delete-bookmark/${id}`,{
                 withCredentials: true
               })  
               alert("Bookmark deleted successfully")
